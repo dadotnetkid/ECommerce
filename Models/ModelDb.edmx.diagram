@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d3af104b4f046ac8514e78536113cee" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="Model.Functions" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="Model.Provinces" Width="1.5" PointX="7.75" PointY="9" />
+        <EntityTypeShape EntityType="Model.Towns" Width="1.5" PointX="10" PointY="8.875" />
+        <EntityTypeShape EntityType="Model.UserClaims" Width="1.5" PointX="7.5" PointY="2.875" />
+        <EntityTypeShape EntityType="Model.UserLogins" Width="1.5" PointX="7.5" PointY="5.5" />
+        <EntityTypeShape EntityType="Model.UserRoles" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="Model.FK_Towns_Towns" />
+        <AssociationConnector Association="Model.UserRolesInFunctions" />
+        <EntityTypeShape EntityType="Model.Actions" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="Model.FK_Actions_Actions" />
+        <EntityTypeShape EntityType="Model.ActionTakens" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="5.25" PointY="1.25" />
+        <AssociationConnector Association="Model.FK_UserClaims_Users" />
+        <AssociationConnector Association="Model.FK_UserLogins_Users" />
+        <AssociationConnector Association="Model.UsersInRoles" />
+        <EntityTypeShape EntityType="Model.Shops" Width="1.5" PointX="7.5" PointY="0.75" />
+        <AssociationConnector Association="Model.FK_Shops_Users" />
+        <EntityTypeShape EntityType="Model.Invetory" Width="1.5" PointX="12" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.Products" Width="1.5" PointX="7.5" PointY="12" />
+        <AssociationConnector Association="Model.FK_Invetory_Products" />
+        <AssociationConnector Association="Model.FK_Products_Users" />
+        <EntityTypeShape EntityType="Model.Carts" Width="1.5" PointX="9.75" PointY="5" />
+        <AssociationConnector Association="Model.FK_Carts_Products" />
+        <AssociationConnector Association="Model.FK_Carts_Users" />
+        <EntityTypeShape EntityType="Model.CartStatus" Width="1.5" PointX="12" PointY="1.25" />
+        <AssociationConnector Association="Model.FK_CartStatus_Carts" />
+        <EntityTypeShape EntityType="Model.Orders" Width="1.5" PointX="12.375" PointY="12.375" />
+        <EntityTypeShape EntityType="Model.OrderStatus" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="Model.FK_Orders_Carts" />
+        <AssociationConnector Association="Model.FK_OrderStatus_Orders" />
+        <EntityTypeShape EntityType="Model.Reviews" Width="1.5" PointX="9.75" PointY="12.625" />
+        <AssociationConnector Association="Model.FK_Reviews_Products" />
+        <AssociationConnector Association="Model.FK_Reviews_Users" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

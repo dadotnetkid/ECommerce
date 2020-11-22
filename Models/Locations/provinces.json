@@ -1,0 +1,104 @@
+[
+  {
+    "name": "Metro Manila",
+    "region": "NCR",
+    "code": "MM"
+  },
+
+  { "name": "Abra", "region": "CAR", "code": "ABR" },
+  { "name": "Apayao", "region": "CAR", "code": "APA" },
+  { "name": "Benguet", "region": "CAR", "code": "BEN" },
+  { "name": "Ifugao", "region": "CAR", "code": "IFU" },
+  { "name": "Kalinga", "region": "CAR", "code": "KAL" },
+  { "name": "Mountain Province", "region": "CAR", "code": "MOU" },
+
+  { "name": "Ilocos Norte", "region": "I", "code": "ILN" },
+  { "name": "Ilocos Sur", "region": "I", "code": "ILS" },
+  { "name": "La Union", "region": "I", "code": "LUN" },
+  { "name": "Pangasinan", "region": "I", "code": "PAN" },
+
+  { "name": "Batanes", "region": "II", "code": "BTN" },
+  { "name": "Cagayan", "region": "II", "code": "CAG" },
+  { "name": "Isabela", "region": "II", "code": "ISA" },
+  { "name": "Nueva Vizcaya", "region": "II", "code": "NUV" },
+  { "name": "Quirino", "region": "II", "code": "QUI" },
+
+  { "name": "Aurora", "region": "III", "code": "AUR" },
+  { "name": "Bataan", "region": "III", "code": "BAN" },
+  { "name": "Bulacan", "region": "III", "code": "BUL" },
+  { "name": "Nueva Ecija", "region": "III", "code": "NUE" },
+  { "name": "Pampanga", "region": "III", "code": "PAM" },
+  { "name": "Tarlac", "region": "III", "code": "TAR" },
+  { "name": "Zambales", "region": "III", "code": "ZMB" },
+
+  { "name": "Batangas", "region": "IV-A", "code": "BTG" },
+  { "name": "Cavite", "region": "IV-A", "code": "CAV" },
+  { "name": "Laguna", "region": "IV-A", "code": "LAG" },
+  { "name": "Quezon", "region": "IV-A", "code": "QUE" },
+  { "name": "Rizal", "region": "IV-A", "code": "RIZ" },
+
+  { "name": "Marinduque", "region": "IV-B", "code": "MAD" },
+  { "name": "Occidental Mindoro", "region": "IV-B", "code": "MDC" },
+  { "name": "Oriental Mindoro", "region": "IV-B", "code": "MDR" },
+  { "name": "Palawan", "region": "IV-B", "code": "PLW" },
+  { "name": "Romblon", "region": "IV-B", "code": "ROM" },
+
+  { "name": "Albay", "region": "V", "code": "ALB" },
+  { "name": "Camarines Norte", "region": "V", "code": "CAN" },
+  { "name": "Camarines Sur", "region": "V", "code": "CAS" },
+  { "name": "Catanduanes", "region": "V", "code": "CAT" },
+  { "name": "Masbate", "region": "V", "code": "MAS" },
+  { "name": "Sorsogon", "region": "V", "code": "SOR" },
+
+  { "name": "Aklan", "region": "VI", "code": "AKL" },
+  { "name": "Antique", "region": "VI", "code": "ANT" },
+  { "name": "Capiz", "region": "VI", "code": "CAP" },
+  { "name": "Guimaras", "region": "VI", "code": "GUI" },
+  { "name": "Iloilo", "region": "VI", "code": "ILI" },
+  { "name": "Negros Occidental", "region": "VI", "code": "NEC" },
+
+  { "name": "Bohol", "region": "VII", "code": "BOH" },
+  { "name": "Cebu", "region": "VII", "code": "CEB" },
+  { "name": "Negros Oriental", "region": "VII", "code": "NER" },
+  { "name": "Siquijor", "region": "VII", "code": "SIG" },
+
+  { "name": "Biliran", "region": "VIII", "code": "BIL" },
+  { "name": "Eastern Samar", "region": "VIII", "code": "EAS" },
+  { "name": "Leyte", "region": "VIII", "code": "LEY" },
+  { "name": "Northern Samar", "region": "VIII", "code": "NSA" },
+  { "name": "Samar", "region": "VIII", "code": "WSA" },
+  { "name": "Southern Leyte", "region": "VIII", "code": "SLE" },
+
+  { "name": "Zamboanga del Norte", "region": "IX", "code": "ZAN" },
+  { "name": "Zamboanga del Sur", "region": "IX", "code": "ZAS" },
+  { "name": "Zamboanga Sibugay", "region": "IX", "code": "ZSI" },
+
+  { "name": "Bukidnon", "region": "X", "code": "BUK" },
+  { "name": "Camiguin", "region": "X", "code": "CAM" },
+  { "name": "Lanao del Norte", "region": "X", "code": "LAN" },
+  { "name": "Misamis Occidental", "region": "X", "code": "MSC" },
+  { "name": "Misamis Oriental", "region": "X", "code": "MSR" },
+
+  { "name": "Compostela Valley", "region": "XI", "code": "COM" },
+  { "name": "Davao del Norte", "region": "XI", "code": "DAV" },
+  { "name": "Davao del Sur", "region": "XI", "code": "DAS" },
+  { "name": "Davao Occidental", "region": "XI", "code": "DAC" },
+  { "name": "Davao Oriental", "region": "XI", "code": "DAO" },
+
+  { "name": "Cotabato", "region": "XII", "code": "NCO" },
+  { "name": "Sarangani", "region": "XII", "code": "SAR" },
+  { "name": "South Cotabato", "region": "XII", "code": "SCO" },
+  { "name": "Sultan Kudarat", "region": "XII", "code": "SUK" },
+
+  { "name": "Agusan del Norte", "region": "XIII", "code": "AGN" },
+  { "name": "Agusan del Sur", "region": "XIII", "code": "AGS" },
+  { "name": "Dinagat Islands", "region": "XIII", "code": "DIN" },
+  { "name": "Surigao del Norte", "region": "XIII", "code": "SUN" },
+  { "name": "Surigao del Sur", "region": "XIII", "code": "SUR" },
+
+  { "name": "Basilan", "region": "ARMM", "code": "BAS" },
+  { "name": "Lanao del Sur", "region": "ARMM", "code": "LAS" },
+  { "name": "Maguindanao", "region": "ARMM", "code": "MAG" },
+  { "name": "Sulu", "region": "ARMM", "code": "SLU" },
+  { "name": "Tawi-tawi", "region": "ARMM", "code": "TAW" }
+]

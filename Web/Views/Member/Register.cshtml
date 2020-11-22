@@ -1,0 +1,119 @@
+﻿@model RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_buyer_layout.cshtml";
+}
+@using (Html.BeginForm("register", "member", FormMethod.Post))
+{
+    <div class="card">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title">Sign up</h4>
+            </header>
+            <form class="block-register">
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">I am a</label>
+                    <div class="col-sm-9 pt-1">
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input class="custom-control-input" checked="" type="radio" name="Buyer" value="true">
+                            <span class="custom-control-label"> Buyer </span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input class="custom-control-input" type="radio" name="Buyer" value="false">
+                            <span class="custom-control-label"> Seller </span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">Full name</label>
+                    <div class="col">
+                        @Html.DevExpress().TextBoxFor(x => x.FirstName, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                        }).GetHtml()
+                    </div>
+                    <div class="col">
+                        @Html.DevExpress().TextBoxFor(x => x.LastName, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                        }).GetHtml()
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">Phone</label>
+                    <div class="col-9">
+                        <div class="input-group">
+
+                            @Html.DevExpress().TextBoxFor(x => x.PhoneNumber, settings =>
+                            {
+                                settings.Width = Unit.Percentage(100);
+                            }).GetHtml()
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        @Html.DevExpress().TextBoxFor(x => x.Email, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                        }).GetHtml()
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">UserName</label>
+                    <div class="col-sm-9">
+                        @Html.DevExpress().TextBoxFor(x => x.Username, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                        }).GetHtml()
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">Address</label>
+                    <div class="col">
+                        @Html.DevExpress().TextBoxFor(x => x.Address, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                        }).GetHtml()
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label class="col-md-3 col-form-label">Password</label>
+                    <div class="col">
+                        @Html.DevExpress().TextBoxFor(x => x.Password, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                        }).GetHtml()
+                    </div>
+                </div>
+
+
+                <div class="form-row mb-2">
+                    <div class="col-sm-9 offset-sm-3">
+                        @Html.DevExpress().Button(settings =>
+                   {
+                       settings.Name = "btnSubmit";
+                       settings.Text = "Register";
+                       settings.UseSubmitBehavior = true;
+                   }).GetHtml()
+                    </div>
+                </div>
+
+            </form>
+        </article> <!-- card-body end .// -->
+        <div class="card-footer text-center">Have an account? <a href="@Url.Action("login","member")">Log In</a></div>
+    </div>
+}
+
+

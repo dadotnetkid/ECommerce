@@ -1,0 +1,80 @@
+﻿@using System.Web.UI.WebControls
+@model Models.ViewModels.LoginViewModel
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_buyer_layout.cshtml";
+}
+
+
+@using (Html.BeginForm("login", "member", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class="user"}))
+{
+    @Html.AntiForgeryToken()
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+    </div>
+    <form class="user">
+        <div class="form-group">
+            <input type="text" name="UserName" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+        </div>
+        <div class="form-group">
+            <input type="password" name="Password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <div class="custom-control custom-checkbox small">
+                <input type="checkbox" class="custom-control-input" name="RememberMe" id="customCheck">
+                <label class="custom-control-label" for="customCheck">Remember Me</label>
+            </div>
+        </div>
+        <button  class="btn btn-primary btn-user btn-block">
+            Login
+        </button>
+        <hr>
+        @* <a class="btn btn-google btn-user btn-block"> *@
+        @*     <i class="fab fa-google fa-fw"></i> Login with Google *@
+        @* </a> *@
+        @* <a href="index.html" class="btn btn-facebook btn-user btn-block"> *@
+        @*     <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook *@
+        @* </a> *@
+    </form>
+    <hr>
+    <div class="text-center">
+        <a class="small" href="forgot-password.html">Forgot Password?</a>
+    </div>
+    <div class="text-center">
+        <a class="small" href="@Url.Action("Register")">Create an Account!</a>
+    </div>
+</div>
+}
+
+
+
+
+
+
+<hr />
+
+
+
+@*<div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+            <i class="fa fa-facebook"></i> Sign in using
+            Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+            <i class="fa fa-google-plus"></i> Sign in using
+            Google+
+        </a>
+    </div>*@
+<!-- /.social-auth-links -->
+
+@*<a href="@Url.Action("register")" class="text-center">Register a new membership</a>*@
+
+
+@Html.Action("ForgotPopupControlPartial")
+<script>
+    function forgotShow() { ForgotPopupControl.Show() }
+</script>

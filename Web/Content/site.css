@@ -1,0 +1,73 @@
+﻿div.min-width-77 .dxeRoot_Material td.dxeCLLSys.dxeCaptionCell_Material {
+    min-width: 95px!important;
+}
+.widget-header {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.widget-header a {
+    color: #343a40;
+}
+.header-main {
+    position: relative;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.icon-sm {
+    width: 48px;
+    height: 48px;
+    line-height: 48px !important;
+    font-size: 20px;
+}
+.icon-xs, .icon-sm, .icon-md, .icon-lg {
+    display: inline-block;
+    text-align: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.icontext {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+.widget-header .notify {
+    position: absolute;
+    top: -3px;
+    right: -10px;
+}
+.notify {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    border-radius: 3rem;
+    color: #fff;
+    background-color: #fa3434;
+}
+.icontext .text {
+    width: 100%;
+    line-height: 1.2;
+}
+.icontext .icon {
+    position: relative;
+    margin-right: 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+
+.min-width-editor .dxeCLLSys {
+    min-width: 115px !important;
+}
+
+.margin-top-10 {
+    margin-top: 10px !important;
+}
+.bg-secondary {
+    background-color: #12225b !important;
+}

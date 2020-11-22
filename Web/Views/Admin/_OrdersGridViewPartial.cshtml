@@ -1,0 +1,79 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "OrdersGridView";
+        settings.Width = Unit.Percentage(100);
+        settings.CallbackRouteValues = new { Controller = "Admin", Action = "OrdersGridViewPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Admin", Action = "OrdersGridViewPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Admin", Action = "OrdersGridViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Admin", Action = "OrdersGridViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = false;
+        settings.CommandColumn.ShowNewButtonInHeader = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.HideDataCells;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Left;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 300;
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Carts.Users.FullName";
+            col.Caption = "Buyer";
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "OrderNumber";
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "OrderedDate";
+
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Carts.Products.Name";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Carts.QTY";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Carts.Amount";
+            col.PropertiesEdit.DisplayFormatString = "##.00##";
+        });
+        settings.Columns.Add(col =>
+        {
+            col.Caption = "";
+            col.SetDataItemTemplateContent(content =>
+            {
+                Html.DevExpress().Button(btn =>
+                {
+                    btn.Name = "btn" + content.KeyValue;
+                    btn.Text = "Order Status";
+                    btn.ClientSideEvents.Click = "function(s,e){showPop('" + content.KeyValue + "')}";
+                }).GetHtml();
+            });
+        });
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

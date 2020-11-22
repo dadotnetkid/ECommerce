@@ -1,0 +1,10 @@
+﻿@model Users
+
+    @{
+        Html.DevExpress().BinaryImageFor(x => x.UserImage, settings =>
+        {
+            settings.CallbackRouteValues = new {Controller="Users",Action= "UserImageUpload" };
+            settings.Properties.EditingSettings.Enabled = true;
+            settings.Width = Unit.Percentage(100);
+        }).GetHtml();
+    }

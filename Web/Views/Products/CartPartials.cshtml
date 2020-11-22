@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Carts>
+<section class="section-content padding-y">
+    <div class="container">
+
+        <div class="row">
+            <main class="col-md-12">
+                <div class="card">
+
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th></th>
+                                <th scope="col">Product</th>
+                                <th scope="col" width="200">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <figure class="itemside">
+                                            <div class="aside">
+                                                @Html.DevExpress().BinaryImage(x =>
+                                           {
+                                               x.Name = $"img{i.Id}";
+                                               x.Properties.ImageSizeMode = ImageSizeMode.FitProportional;
+                                               x.Width = Unit.Pixel(150);
+                                           }).Bind(i.Products?.Image).GetHtml();
+                                            </div>
+                                            <figcaption class="info">
+                                                <a href="#" class="title text-dark">@i.Products.Name</a>
+                                                <p class="text-muted small">@i.Products.Descriptions</p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-light" href="#" onclick="addToCart(this)" data-productId="@i.ProductId" data-cartId="@i.Id" data-qty="-1"><span class="fa fa-minus"></span></a>
+                                        <a class="btn btn-light" href="#"><span class="">@i.QTY</span></a>
+                                        <a class="btn btn-light" href="#" onclick="addToCart(this)" data-productId="@i.ProductId" data-cartId="@i.Id" data-qty="1"><span class="fa fa-plus"></span></a>
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price">₱ @{ViewContext.Writer.Write(i.Amount?.ToString("n2"));}</var>
+                                            <small class="text-muted"> ₱ @{ViewContext.Writer.Write(i.Products.Price?.ToString("n2"));} each </small>
+                                        </div> <!-- price-wrap .// -->
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="#" onclick="removeCart(this)"  data-cartId="@i.Id" class="btn btn-light"> Remove</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+
+                                <th>Total Amount of:</th>
+                                <th>₱ @{ViewContext.Writer.Write(Model.Sum(x => x.Amount)?.ToString("n2"));}</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="card-body border-top">
+                        <a href="@Url.Action("MakePurchase")" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
+                        <a href="@Url.Action("index","products")" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+                    </div>
+                </div> <!-- card.// -->
+                @*<div class="alert alert-success mt-3">
+                        <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                    </div>*@
+
+            </main> <!-- col.// -->
+            <!-- col.// -->
+        </div>
+
+    </div> <!-- container .//  -->
+</section>

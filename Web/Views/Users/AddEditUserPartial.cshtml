@@ -1,0 +1,149 @@
+﻿@model Users
+
+<div class="row min-width-77">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xl-12">
+                @{
+                    Html.DevExpress().TextBoxFor(m => m.Email, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "Email";
+                        settings.Properties.NullText = "Email";
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.ShowModelErrors = true;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    Html.DevExpress().TextBoxFor(m => m.Password, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "Password";
+                        settings.Properties.NullText = "Password";
+                        settings.ShowModelErrors = true;
+                        settings.Properties.Password = true;
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    Html.DevExpress().TextBoxFor(m => m.FirstName, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "First Name";
+                        settings.ShowModelErrors = true;
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.ValidationSettings.RequiredField.IsRequired = true;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    Html.DevExpress().TextBoxFor(m => m.MiddleName, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.ShowModelErrors = true;
+                        settings.Properties.Caption = "M.I";
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        settings.Properties.ValidationSettings.RequiredField.IsRequired = true;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    Html.DevExpress().TextBoxFor(m => m.LastName, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.ShowModelErrors = true;
+                        settings.Properties.Caption = "Last Name";
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        settings.Properties.ValidationSettings.RequiredField.IsRequired = true;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    Html.DevExpress().TextBoxFor(m => m.Position, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "Position";
+                        settings.ShowModelErrors = true;
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    Html.DevExpress().TokenBox(settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Name = "Roles";
+                        settings.Properties.Caption = "User Roles";
+                        settings.Properties.NullText = "User Roles";
+                        settings.ShowModelErrors = true;
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        settings.PreRender = (s, e) =>
+                        {
+                            ASPxTokenBox tokenBox = s as ASPxTokenBox;
+                            if (Model?.UserRoles != null)
+                            {
+                                foreach (var i in Model?.UserRoles)
+                                {
+                                    tokenBox.Tokens.Add(i.Name);
+                                }
+                            }
+                        };
+                    }).BindList(new UnitOfWork().UserRolesRepo.Get().Select(x => x.Name)).GetHtml();
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        @{
+            Html.RenderPartial("UserImagePartial", Model);
+        }
+    </div>
+</div>
+
+<div class="row margin-top-10 ">
+    <div class="col-lg-12">
+        @{
+            Html.DevExpress().Button(settings =>
+            {
+                settings.Name = "btnSubmit";
+                settings.ClientSideEvents.Click = "function(s,e){UsersGridView.UpdateEdit()}";
+                settings.Text = "Submit";
+            }).GetHtml();
+            Html.DevExpress().Button(settings =>
+            {
+                settings.Name = "btnCancel";
+                settings.ControlStyle.CssClass = "margin-left-10";
+                settings.ClientSideEvents.Click = "function(s,e){UsersGridView.CancelEdit()}";
+                settings.Text = "Cancel";
+            }).GetHtml();
+        }
+    </div>
+</div>

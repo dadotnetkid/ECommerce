@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@Html.Action("OrdersGridViewPartial")
+<div id="popup-container"></div>
+
+
+<script>
+    function showPop(orderId) {
+        $.ajax({
+            url: '@Url.Action("OrderStatusModal")',
+            data: {
+                orderId: orderId
+            },
+            success: function (html) {
+                $('#popup-container').html(html);
+            }
+        })
+    }
+</script>

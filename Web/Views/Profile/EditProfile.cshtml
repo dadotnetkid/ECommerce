@@ -1,0 +1,118 @@
+﻿@model Users
+@using (Ajax.BeginForm("editprofile", "profile", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "profile-container",
+    OnBegin = "ldpLoading.Show()",
+    OnComplete = "ldpLoading.Hide()",
+
+}))
+{
+    <div class="row min-width-77">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xl-12">
+                    @{
+                        Html.DevExpress().TextBoxFor(m => m.Email, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                            settings.Properties.Caption = "Email";
+                            settings.Properties.NullText = "Email";
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                            settings.ShowModelErrors = true;
+                            settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        }).GetHtml();
+                    }
+                </div>
+
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    @{
+                        Html.DevExpress().TextBoxFor(m => m.FirstName, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                            settings.Properties.Caption = "First Name";
+                            settings.ShowModelErrors = true;
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                            settings.Properties.ValidationSettings.RequiredField.IsRequired = true;
+                            settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        }).GetHtml();
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @{
+                        Html.DevExpress().TextBoxFor(m => m.MiddleName, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                            settings.ShowModelErrors = true;
+                            settings.Properties.Caption = "M.I";
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                            settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        }).GetHtml();
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @{
+                        Html.DevExpress().TextBoxFor(m => m.LastName, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+                            settings.ShowModelErrors = true;
+                            settings.Properties.Caption = "Last Name";
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                            settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                            settings.Properties.ValidationSettings.RequiredField.IsRequired = true;
+                        }).GetHtml();
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    @Html.DevExpress().TextBoxFor(x => x.PhoneNumber, settings =>
+                    {
+                        settings.Properties.Caption = "Phone Number";
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        settings.Width = Unit.Percentage(100);
+                    }).GetHtml()
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.DevExpress().TextBoxFor(x => x.AddressLine1, settings =>
+                    {
+                        settings.Properties.Caption = "Address Line";
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                        settings.Width = Unit.Percentage(100);
+                    }).GetHtml()
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            @{
+                Html.RenderPartial("ProfileImagePartial", Model);
+            }
+        </div>
+    </div>
+
+    <div class="row margin-top-10 ">
+        <div class="col-lg-12">
+            @{
+                Html.DevExpress().Button(settings =>
+                {
+                    settings.Name = "btnSubmit";
+                    settings.UseSubmitBehavior = true;
+                    settings.Text = "Submit";
+                }).GetHtml();
+
+            }
+        </div>
+    </div>
+}

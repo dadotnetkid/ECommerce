@@ -1,0 +1,66 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Width = Unit.Percentage(100);
+        settings.Name = "UsersGridView";
+        settings.CallbackRouteValues = new { Controller = "Users", Action = "UsersGridViewPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Users", Action = "UsersGridViewPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Users", Action = "UsersGridViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Users", Action = "UsersGridViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = false;
+        settings.CommandColumn.ShowNewButtonInHeader = User.UserIsInAction("New User");
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = true;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 300;
+        settings.AddAddEditDeleteToolbar();
+        settings.Columns.Add("UserName");
+        settings.Columns.Add("FullName");
+        settings.Columns.Add("UserRole");
+        settings.SetEditFormTemplateContent(col =>
+        {
+
+            Html.DevExpress().PopupControl(pop =>
+            {
+                pop.HeaderText = "User";
+                pop.Width = Unit.Pixel(700);
+                pop.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+                pop.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+                pop.Name = col.KeyValue + "_popup";
+                pop.Modal = true;
+                pop.ShowOnPageLoad = true;
+                pop.CloseOnEscape = false;
+                pop.ShowCloseButton = true;
+                pop.ClientSideEvents.CloseUp = "function(s,e){UsersGridView.CancelEdit()}";
+                pop.CloseAction = CloseAction.CloseButton;
+                pop.SetContent(() =>
+                {
+                    if (ViewData["Model"] != null)
+                        Html.RenderPartial("AddEditUserPartial", ViewData["Model"]);
+                    else
+                        Html.RenderAction("AddEditUserPartial", new { userId = col.KeyValue });
+                });
+            }).GetHtml();
+        });
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

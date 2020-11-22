@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Orders>
+@{
+    var userId = User.Identity.GetUserId();
+    var user = new UnitOfWork().UsersRepo.Find(x => x.Id == userId);
+}
+<div class="row">
+    <div class="col">
+
+        @foreach (var orders in Model.GroupBy(x => x.OrderNumber))
+        {
+            var orderNumber = orders.Key;
+            var dateOrder = new UnitOfWork().OrdersRepo.Find(x => x.OrderNumber == orderNumber)?.OrderedDate?.ToString("dd MMMM yyyy");
+            <article class="card mb-4">
+                <header class="card-header">
+                    <strong class="d-inline-block mr-3">Order ID: @orderNumber</strong>
+                    <span>Date Order: @dateOrder</span>
+                </header>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h6 class="text-muted">Delivery to</h6>
+                            <p>
+                                @user.FullName <br>
+                                <b>Phone</b> @user.PhoneNumber <b>Email:</b> @user.Email <br>
+                                <b> Location:</b> @user.AddressLine1<br>
+
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="text-muted">Payment</h6>
+                            <span class="text-success">
+                                <i class="fa fa-motorcycle"></i>
+                                Cash on Delivery
+                            </span>
+                            <p>
+
+                                <span class="b">
+                                    Total: ₱
+                                    @{ViewContext.Writer.Write(Model.Sum(x => x.Carts.Amount)?.ToString("n2"));}
+                                </span>
+                            </p>
+                        </div>
+                    </div> <!-- row.// -->
+                </div> <!-- card-body .// -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            @foreach (var i in Model.Where(x => x.OrderNumber == orderNumber))
+                            {
+                                <tr>
+                                    <td width="65">
+                                        @Html.DevExpress().BinaryImage(x =>
+                                        {
+                                            x.Name = $"img{i.Id}";
+                                            x.Properties.ImageSizeMode = ImageSizeMode.ActualSizeOrFit;
+                                            x.Width = Unit.Pixel(150);
+
+                                        }).Bind(i.Carts?.Products?.Image).GetHtml()
+
+                                    </td>
+                                    <td>
+                                        <p class="title mb-0">@i.Carts.Products.Name </p>
+                                        <var class="price text-muted">
+                                            ₱
+                                            @{ ViewContext.Writer.Write(i.Carts?.Amount?.ToString("n2"));}
+                                        </var>
+                                    </td>
+                                    <td> <b>Seller</b> <br><i class=""></i> @i.Carts.Products.Users.FullName</td>
+                                    <!--<td width="250">
+                                    <a href="#" class="btn btn-outline-primary">Track order</a>
+                                    <div class="dropdown d-inline-block">
+                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-outline-secondary">More</a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="#" class="dropdown-item">Return</a>
+                                            <a href="#" class="dropdown-item">Cancel order</a>
+                                        </div>
+                                    </div>-->
+                                    <!-- dropdown.// -->
+                                    <!--</td>-->
+                                    <td>
+                                        @foreach (var status in i.OrderStatus)
+                                        {
+                                            <p>@status.Status</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="#" data-id="@i.Id" onclick="cancelOrder(this)" class="btn btn-primary">Cancel order</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                </div> <!-- table-responsive .end// -->
+            </article>
+
+        }
+        @if (!Model.Any())
+        {
+            <article class="card mb-4">
+                <header class="card-header">
+
+                    <strong class="d-inline-block mr-3">No Orders Yet</strong>
+
+                </header>
+
+            </article>
+        }
+    </div>
+</div>
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "CancelOrderPartial";
+    settings.Width = Unit.Pixel(700);
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+    settings.AllowResize = true;
+    settings.ShowHeader = true;
+    settings.AllowDragging = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.CloseOnEscape = true;
+    settings.Modal = true;
+    settings.PopupElementID = "CancelOrderPartial";
+    settings.HeaderText = "Order Status";
+    settings.ClientSideEvents.Closing = "function(s,e){}";
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write("<div id='cancel-order'></div>");
+    });
+}).GetHtml()

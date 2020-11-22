@@ -1,0 +1,21 @@
+﻿
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "OrdesStatusPopupControl";
+    settings.Width = Unit.Pixel(700);
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+    settings.AllowResize = true;
+    settings.ShowHeader = true;
+    settings.ShowOnPageLoad = true;
+    settings.AllowDragging = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.CloseOnEscape = true;
+    settings.Modal = true;
+    settings.PopupElementID = "OrdesStatusPopupControl";
+    settings.HeaderText = "Order Status";
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("OrderStatusGridViewPartial", new { orderId = ViewBag.orderId });
+    });
+}).GetHtml()

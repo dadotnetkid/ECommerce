@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_buyer_layout.cshtml";
+}
+<section class="section-content padding-y">
+    <div class="container">
+
+        <div class="row">
+            <aside class="col-md-3">
+                <nav class="list-group">
+                    <a class="list-group-item active" href="#account-overview" onclick="selectNav(this)" data-url="@Url.Action("accountoverview")" id="account-overview"> Account overview  </a>
+                    <a class="list-group-item" href="#reset-password" onclick="selectNav(this)" data-url="@Url.Action("resetpassword")" id="reset-password"> Reset Password </a>
+
+                    <a class="list-group-item" href="@Url.Action("LogOff","member")"> Log out </a>
+
+                </nav>
+            </aside> <!-- col.// -->
+            <main class="col-md-9">
+                <div class="card">
+                    <div id="profile-container">
+                        @Html.Action("AccountOverview")
+                    </div>
+                </div>
+            </main> <!-- col.// -->
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+<script>
+    function selectNav(ctrl) {
+        var url = $(ctrl).attr('data-url');
+        $('.list-group-item').removeClass('active');
+        $.ajax({
+            url: url,
+            success: function (html) {
+                $('#profile-container').html(html);
+                $(ctrl).addClass('active');
+            }
+        });
+    }
+    function editprofile() {
+        $.ajax({
+            url: '@Url.Action("EditProfile")',
+            method:'GET',
+            success: function (html) {
+                $('#profile-container').html(html);
+            }
+        });
+    }
+</script>

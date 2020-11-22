@@ -1,0 +1,7 @@
+﻿@{
+    Html.DevExpress().WebDocumentViewer(settings =>
+    {
+        settings.Name = "rptViewer";
+        settings.Width = Unit.Percentage(100);
+    }).Bind(Model).GetHtml();
+}

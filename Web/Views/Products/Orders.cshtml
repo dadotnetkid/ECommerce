@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_buyer_Layout.cshtml";
+
+}
+
+<div id="order-container">
+    @Html.Action("OrderPartial")
+</div>
+
+<script>
+    function cancelOrder(ctrl) {
+        var orderId=$(ctrl).attr('data-id');
+               $.ajax({
+            url: '@Url.Action("cancelorder")',
+            data: {
+                orderId: orderId
+            },
+            success: function(html) {
+                $('#cancel-order').html(html);
+                CancelOrderPartial.Show();
+            }
+        });
+
+    }
+    function refresh() {
+        ldpLoading.Show();
+        $.ajax({
+
+            url: '@Url.Action("OrderPartial")',
+         
+            success: function(html) {
+                $('#order-container').html(html);
+                ldpLoading.Hide();
+            }
+        });
+    }
+</script>

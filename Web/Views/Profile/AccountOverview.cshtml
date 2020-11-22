@@ -1,0 +1,32 @@
+﻿@model Users
+<div class="card-body">
+				
+    <figure class="icontext">
+        <div class="icon">
+            @{
+                Html.DevExpress().BinaryImage(x =>
+                {
+                    x.Name = $"img";
+                    x.Properties.ImageSizeMode = ImageSizeMode.FitProportional;
+                    x.Width = 150;
+                }).Bind(Model.UserImage).GetHtml();
+            }
+        </div>
+        <div class="text">
+            <strong> @Model.FullName </strong> <br> 
+            <p class="mb-2"> @Model.Email </p> 
+            <a href="#" onclick="editprofile()" class="btn btn-light btn-sm">Edit</a>
+        </div>
+    </figure>
+    <hr>
+    <p>
+        <i class="fa fa-map-marker text-muted"></i> &nbsp; My address:  
+        <br>@Model.AddressLine1      &nbsp; 
+    </p>
+
+				
+
+    
+				
+
+</div>

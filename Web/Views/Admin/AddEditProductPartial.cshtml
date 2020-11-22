@@ -1,0 +1,81 @@
+﻿@model Products
+<input type="hidden" name="CreatedBy" value="@User.Identity.GetUserId()"/>
+<div class="row min-width-editor">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                @{
+                    Html.DevExpress().TextBoxFor(x => x.Name, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "Product Name";
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @{
+                    Html.DevExpress().TextBoxFor(x => x.SKU, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "SKU";
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @{
+                    Html.DevExpress().SpinEditFor(x => x.Price, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "Price";
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @{
+                    Html.DevExpress().MemoFor(x => x.Descriptions, settings =>
+                    {
+                        settings.Width = Unit.Percentage(100);
+                        settings.Properties.Caption = "Descriptions";
+                        settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Left;
+                    }).GetHtml();
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+
+        @{
+            Html.RenderPartial("ProductImageUploadPartial", Model);
+        }
+
+    </div>
+</div>
+
+
+<div class="row margin-top-10">
+    <div class="col-12">
+        @{
+            Html.DevExpress().Button(settings =>
+            {
+                settings.Name = "btnSubmit";
+                settings.Text = "Save";
+                settings.ClientSideEvents.Click = "function(s,e){ProductsCardView.UpdateEdit()}";
+            }).GetHtml();
+            Html.DevExpress().Button(settings =>
+            {
+                settings.Name = "btnCancel";
+                settings.Text = "Cancel";
+                settings.ClientSideEvents.Click = "function(s,e){ProductsCardView.CancelEdit()}";
+            }).GetHtml();
+        }
+    </div>
+</div>

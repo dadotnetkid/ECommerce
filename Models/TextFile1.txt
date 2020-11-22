@@ -1,0 +1,168 @@
+﻿USE [northops]
+
+SET IDENTITY_INSERT [Provinces] ON 
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (1, N'Metro Manila', 1)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (2, N'Abra', 2)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (3, N'Agusan del Norte', 3)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (4, N'Agusan del Sur', 4)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (5, N'Aklan', 5)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (6, N'Albay', 6)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (7, N'Antique', 7)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (8, N'Apayao', 8)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (9, N'Aurora', 9)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (10, N'Basilan', 10)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (11, N'Bataan', 11)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (12, N'Batanes', 12)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (13, N'Batangas', 13)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (14, N'Benguet', 14)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (15, N'Biliran', 15)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (16, N'Bohol', 16)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (17, N'Bukidnon', 17)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (18, N'Bulacan', 18)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (19, N'Cagayan', 19)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (20, N'Camarines Norte', 20)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (21, N'Camarines Sur', 21)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (22, N'Camiguin', 22)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (23, N'Capiz', 23)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (24, N'Catanduanes', 24)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (25, N'Cavite', 25)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (26, N'Cebu', 26)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (27, N'Compostela Valley', 27)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (28, N'Cotabato', 28)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (29, N'Davao del Norte', 29)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (30, N'Davao del Sur', 30)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (31, N'Davao Oriental', 31)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (32, N'Dinagat Islands', 32)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (33, N'Eastern Samar', 33)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (34, N'Guimaras', 34)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (35, N'Ifugao', 35)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (36, N'Ilocos Norte', 36)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (37, N'Ilocos Sur', 37)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (38, N'Iloilo', 38)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (39, N'Isabela', 39)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (40, N'Kalinga', 40)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (41, N'La Union', 41)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (42, N'Laguna', 42)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (43, N'Lanao del Norte', 43)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (44, N'Lanao del Sur', 44)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (45, N'Leyte', 45)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (46, N'Maguindanao', 46)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (47, N'Marinduque', 47)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (48, N'Masbate', 48)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (49, N'Misamis Occidental', 49)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (50, N'Misamis Oriental', 50)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (51, N'Mountain Province', 51)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (52, N'Negros Occidental', 52)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (53, N'Negros Oriental', 53)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (54, N'Northern Samar', 54)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (55, N'Nueva Ecija', 55)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (56, N'Nueva Vizcaya', 56)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (57, N'Occidental Mindoro', 57)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (58, N'Oriental Mindoro', 58)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (59, N'Palawan', 59)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (60, N'Pampanga', 60)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (61, N'Pangasinan', 61)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (62, N'Quezon', 62)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (63, N'Quirino', 63)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (64, N'Rizal', 64)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (65, N'Romblon', 65)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (66, N'Samar', 66)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (67, N'Sarangani', 67)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (68, N'Siquijor', 68)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (69, N'Sorson', 69)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (70, N'South Cotabato', 70)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (71, N'Southern Leyte', 71)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (72, N'Sultan Kudarat', 72)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (73, N'Sulu', 73)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (74, N'Surigao del Norte', 74)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (75, N'Surigao del Sur', 75)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (76, N'Tarlac', 76)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (77, N'Tawi-Tawi', 77)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (78, N'Zambales', 78)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (79, N'Zamboanga del Norte', 79)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (80, N'Zamboanga del Sur', 80)
+
+INSERT [Provinces] ([Id], [Name], [SortOrder]) VALUES (81, N'Zamboanga Sibugay', 81)
+
+SET IDENTITY_INSERT [Provinces] OFF
+

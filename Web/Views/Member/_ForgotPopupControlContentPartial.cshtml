@@ -1,0 +1,27 @@
+﻿
+<div class="row">
+    <div class="col-lg-12">
+        @{
+            Html.DevExpress().TextBox(settings =>
+            {
+                settings.Name = "EmailAddress";
+                settings.Width = Unit.Percentage(100);
+                settings.Properties.NullText = "Email Address";
+            }).GetHtml();
+        }
+
+    </div>
+</div>
+<div class="row margin-top-10">
+    <div class="col-lg-12">
+        @{
+            Html.DevExpress().Button(settings =>
+            {
+                settings.Name = "btnSubmit";
+                settings.Text = "Send";
+                settings.ClientSideEvents.Click = "function(s,e){ForgotPopupControl.PerformCallback({EmailAddress:EmailAddress.GetValue()})}";
+            }).GetHtml();
+        }
+
+    </div>
+</div>

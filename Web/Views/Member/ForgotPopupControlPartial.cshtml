@@ -1,0 +1,24 @@
+﻿@{
+    Html.DevExpress().PopupControl(settings =>
+    {
+        settings.Name = "ForgotPopupControl";
+        settings.AllowResize = true;
+        settings.Width = Unit.Pixel(300);
+        settings.ShowHeader = true;
+        settings.ShowOnPageLoad = false;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = false;
+        settings.Modal = true;
+        settings.PopupElementID = "ForgotPopupControl";
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.CallbackRouteValues = new { Action = "ForgotPopupControlPartial", Controller = "Member" };
+        settings.HeaderText = "Forgot Password";
+        settings.SetContent(() =>
+        {
+            Html.RenderPartial("_ForgotPopupControlContentPartial");
+        });
+    }).GetHtml();
+
+
+}

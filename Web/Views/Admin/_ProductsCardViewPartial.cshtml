@@ -1,0 +1,76 @@
+@{
+    var cardView = Html.DevExpress().CardView(settings =>
+    {
+        settings.Name = "ProductsCardView";
+        settings.Width = Unit.Percentage(100);
+        settings.CallbackRouteValues = new { Controller = "Admin", Action = "ProductsCardViewPartial" };
+
+        settings.SettingsEditing.AddNewCardRouteValues = new { Controller = "Admin", Action = "ProductsCardViewPartialAddNew" };
+        settings.SettingsEditing.UpdateCardRouteValues = new { Controller = "Admin", Action = "ProductsCardViewPartialUpdate" };
+        settings.SettingsEditing.DeleteCardRouteValues = new { Controller = "Admin", Action = "ProductsCardViewPartialDelete" };
+        settings.SettingsEditing.Mode = CardViewEditingMode.EditForm;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.KeyFieldName = "Id";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowHeaderPanel = true;
+        settings.Settings.ShowHeaderFilterButton = true;
+        settings.SettingsBehavior.AllowSelectByCardClick = true;
+        settings.Columns.Add(col =>
+        {
+            col.FieldName = "Image";
+            col.Caption = "";
+            col.ColumnType = MVCxCardViewColumnType.BinaryImage;
+            col.EditorProperties().BinaryImage(b =>
+            {
+                b.ImageSizeMode = ImageSizeMode.FillAndCrop;
+                b.ImageWidth = 160;
+            });
+
+        });
+        settings.Columns.Add("Name");
+        settings.Columns.Add("Descriptions");
+        settings.Columns.Add("SKU");
+        settings.Columns.Add("Price");
+        settings.SetEditFormTemplateContent(content =>
+        {
+
+            Html.DevExpress().PopupControl(pop =>
+            {
+                pop.Name = "popProductEditor";
+                pop.HeaderText = DataBinder.Eval(content.DataItem, "Name")?.ToString() ?? "New Product";
+                pop.Width = Unit.Pixel(1024);
+                pop.ShowOnPageLoad = true;
+                pop.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+                pop.Modal = true;
+                pop.CloseAction = CloseAction.CloseButton;
+                pop.ClientSideEvents.CloseButtonClick = "function(s,e){ProductsCardView.CancelEdit()}";
+                pop.SetContent(() =>
+                {
+                    using (Html.BeginForm())
+                    {
+                        Html.RenderAction("AddEditProductPartial", new { productId = content.KeyValue });
+                    }
+                });
+            }).GetHtml();
+        });
+        settings.CardLayoutProperties.Items.AddCommandItem(i =>
+        {
+            i.ShowNewButton = true;
+            i.ShowEditButton = true;
+            i.ShowDeleteButton = true;
+        });
+        settings.CardLayoutProperties.Items.AddEditModeCommandItem();
+        settings.CardLayoutProperties.Items.Add("Image");
+        settings.CardLayoutProperties.Items.Add("Name");
+        settings.CardLayoutProperties.Items.Add("Descriptions");
+        settings.CardLayoutProperties.Items.Add("SKU");
+        settings.CardLayoutProperties.Items.Add("Price");
+    });
+    if (ViewData["EditError"] != null)
+    {
+        cardView.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@cardView.Bind(Model).GetHtml()

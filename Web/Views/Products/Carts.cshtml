@@ -1,0 +1,39 @@
+﻿
+
+@{
+    ViewBag.Title = "Carts";
+    Layout = "~/Views/Shared/_buyer_Layout.cshtml";
+}
+
+
+<div id="cart-container">
+    @Html.Action("cartPartials")
+</div>
+<script>
+    function addToCart(ctrl) {
+        var productId = $(ctrl).attr('data-productId');
+        var cartId = $(ctrl).attr('data-cartId');
+        var qty = $(ctrl).attr('data-qty');
+        ldpLoading.Show();
+        $.ajax({
+            url: '@Url.Action("AddToCart")',
+            data: { productId: productId, cartId: cartId, qty: qty },
+            success: function (html) {
+                $('#cart-container').html(html);
+                ldpLoading.Hide();
+            }
+        })
+    }
+    function removeCart(ctrl) {
+        var cartId = $(ctrl).attr('data-cartId');
+        ldpLoading.Show();
+        $.ajax({
+            url: '@Url.Action("RemoveItemInCart")',
+            data: { cartId: cartId},
+            success: function (html) {
+                $('#cart-container').html(html);
+                ldpLoading.Hide();
+            }
+        })
+    }
+</script>

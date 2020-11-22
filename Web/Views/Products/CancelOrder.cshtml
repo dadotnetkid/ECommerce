@@ -1,0 +1,30 @@
+﻿@model Orders
+@using (Ajax.BeginForm("cancelorder", "products", new { orderId = ViewBag.orderId }, new AjaxOptions()
+{
+    HttpMethod = "POST",
+    OnBegin = "ldpLoading.Show()",
+    OnComplete = "ldpLoading.Hide()",
+    UpdateTargetId = "order-container"
+}))
+{
+    <div class="row">
+        <div class="col-12">
+            @Html.DevExpress().TextBox(settings =>
+            {
+                settings.Name = "Reason";
+                settings.Properties.Caption = "Reason";
+                settings.Width = Unit.Percentage(100);
+            }).GetHtml()
+        </div>
+    </div>
+    <div class="row margin-top-10">
+        <div class="col-12">
+            @Html.DevExpress().Button(settings =>
+       {
+           settings.Name = "btnReason";
+           settings.Text = "Submit";
+           settings.UseSubmitBehavior = true;
+       }).GetHtml()
+        </div>
+    </div>
+}

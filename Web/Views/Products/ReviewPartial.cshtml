@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Reviews>
+<div class="row">
+    <div class="col-md-12">
+
+        <header class="section-heading">
+            <h3>Review Products </h3>
+            <div class="rating-wrap">
+                <ul class="rating-stars stars-lg">
+                    <li style="width:80%" class="stars-active">
+                    </li>
+                    <li>
+                    </li>
+                </ul>
+                <strong class="label-rating text-lg">
+                    
+                    @{
+                        ViewContext.Writer.Write(Model.Average(x => x.Rating)?.ToString("n2"));
+                    } 
+                     <span class="text-muted">| @Model.Count() reviews</span>
+                </strong>
+            </div>
+        </header>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Action("AddReview", new { productId = ViewBag.productid })
+
+        }
+        @foreach (var i in Model)
+        {
+            <article class="box mb-3 margin-top-10">
+                <div class="icontext w-100">
+                    @{
+                        Html.DevExpress().BinaryImage(settings =>
+                        {
+                        settings.Name = i.UserId + i.Id;
+                        settings.Width = 50;
+                            settings.Style.Add("border-radius ", "20px");
+                        }).Bind(i?.Users?.UserImage).GetHtml();
+                    }
+                    <div class="text">
+                        <span class="date text-muted float-md-right">@{ ViewContext.Writer.Write(i?.DateCreated?.ToLongDateString());}</span>
+                        <h6 class="mb-1">@{
+                                             ViewContext.Writer.Write(i.Users?.FullName);
+                                         } </h6>
+                        <ul class="rating-stars">
+                            <li class="stars-active">
+                                <div class="@i.Id-star-rating-user"></div>
+
+                            </li>
+
+                            <li>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div> <!-- icontext.// -->
+                <div class="mt-3">
+                    <p>
+                        @i.Review
+                    </p>
+                </div>
+            </article>
+        }
+
+
+    </div> <!-- col.// -->
+</div>
+<script>
+    $(document).ready(function() {
+        $(".my-rating").starRating({
+            starSize: 25,
+            callback: function(currentRating, $el) {
+                $('#Rating').val(currentRating);
+            },
+            onHover: function(currentIndex, currentRating, $el) {
+                console.log($el);542
+            },
+
+        });
+        @foreach (var i in Model)
+        {
+            ViewContext.Writer.WriteLine(" $('."+i.Id+ "-star-rating-user').starRating({starSize: 25,initialRating: " + i.Rating + ",readOnly: true});");
+        }
+   
+});
+</script>

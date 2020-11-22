@@ -1,0 +1,45 @@
+﻿@model Reviews
+@using (Ajax.BeginForm("WriteReview", new { productId = ViewBag.productId }, new AjaxOptions()
+{
+    OnBegin = "ldpLoading.Show()",
+    OnComplete = "ldpLoading.Hide()",
+    HttpMethod = "POST",
+    UpdateTargetId= "review-container",
+    
+    
+}))
+{
+    @Html.HiddenFor(m=>m.Rating)
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Write Comment</h4>
+   
+                    @{
+                        Html.DevExpress().MemoFor(x => x.Review, settings =>
+                        {
+                            settings.Width = Unit.Percentage(100);
+
+                        }).GetHtml();
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                  
+                    @{
+                        Html.DevExpress().Button(settings =>
+                        {
+                            settings.Text = "Submit";
+                            settings.Name = "btnSubmitReview";
+                            settings.UseSubmitBehavior = true;
+                        }).GetHtml();
+                    }
+                    <span class="my-rating"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

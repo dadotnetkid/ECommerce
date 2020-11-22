@@ -1,0 +1,10 @@
+﻿@model Products
+
+@{
+    Html.DevExpress().BinaryImageFor(x => x.Image, settings =>
+    {
+        settings.CallbackRouteValues = new { Controller = "Admin", Action = "ProductImagePartial" };
+        settings.Properties.EditingSettings.Enabled = true;
+        settings.Width = Unit.Percentage(100);
+    }).GetHtml();
+}

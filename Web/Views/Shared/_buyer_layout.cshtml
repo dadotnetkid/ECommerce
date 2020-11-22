@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="max-age=604800">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="Bootstrap e-commerce html template similar to Alibaba">
+    <meta name="keywords" content="Online template, shop, theme, template, html, css, bootstrap 4">
+
+    <title>Pre Loved Buy and Sell</title>
+
+    <link href="https://bootstrap-ecommerce.com/templates/alistyle-html/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <!-- Font awesome 5 -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- custom style -->
+    <link href="~/Content/template-ecommerce/ui.css" rel="stylesheet" />
+    <link href="~/Content/template-ecommerce/responsive.css" rel="stylesheet" />
+    <!-- jQuery -->
+
+
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.QueryBuilder },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.CardView }
+        )
+
+
+
+    <!-- Bootstrap4 files-->
+
+    <!-- custom javascript -->
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+   
+
+    <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
+
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below -->
+
+    
+    
+    
+    
+    
+
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/template-ecommerce/script.js"></script>
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.Chart },
+        new Script { ExtensionSuite = ExtensionSuite.Report },
+        new Script { ExtensionSuite = ExtensionSuite.QueryBuilder },
+        new Script { ExtensionSuite = ExtensionSuite.GridView },
+        new Script { ExtensionSuite = ExtensionSuite.CardView }
+        )
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body style="">
+
+    <!-- REMOVE FOLLOWING LINK -->
+    <!-- REMOVE  //END -->
+
+
+    <header class="section-header">
+        <!-- header-main .// -->
+
+        @Html.Partial("_header_buyer_main")
+
+        @*@Html.Partial("_navbar_buyer")*@
+
+    </header> <!-- section-header.// -->
+
+
+    <div class="container" style="min-height: 70vh;padding-top: 30px;" id="container-body">
+        @RenderBody()
+    </div>
+    @Html.Partial("_buyer_footer")
+  
+    @Html.DevExpress().LoadingPanel(settings =>
+    {
+        settings.Name = "ldpLoading";
+    }).GetHtml()
+
+<link href="~/Content/star-rating/src/css/star-rating-svg.css" rel="stylesheet" />
+
+<script src="~/Content/star-rating/dist/jquery.star-rating-svg.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Products>
+@{
+    var paginationOption = PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+    {
+        UpdateTargetId = "container-body",
+        OnBegin = "ldpLoading.Show()",
+        OnComplete = "ldpLoading.Hide()",
+        HttpMethod = "POST"
+    });
+
+}
+
+<section class="padding-bottom-sm">
+
+    <header class="section-heading heading-line">
+        <h4 class="title-section text-uppercase">Recommended items</h4>
+    </header>
+    @Html.PagedListPager(Model, page =>
+        Url.Action("productpartials", new { search = ViewBag.search, page = page }), paginationOption
+        )
+    <div class="row row-sm">
+
+        @foreach (var i in Model)
+        {
+            <div class="col-xl-3 col-lg-3 col-md-4 col-6">
+                <div class="card card-sm card-product-grid">
+                    <a href="@Url.Action("ProductDetails",new { productId=i.Id})" class="img-wrap">
+                        @{
+                            Html.DevExpress().BinaryImage(x =>
+                            {
+                                x.Name = "img" + i.Id;
+                                x.Properties.ImageSizeMode = ImageSizeMode.FitProportional;
+                            }).Bind(i.Image).GetHtml();
+                        }
+                    </a>
+                    <figcaption class="info-wrap">
+                        <a href="@Url.Action("ProductDetails",new { productId=i.Id})" class="title">@i.Name</a>
+                        <div class="@i.Id-star-rating-product"></div>
+                        @if (i.Reviews.Any(x => x.Rating > 0))
+                        {
+                            <script>
+                                $(document).ready(function () {
+                                    @{
+                                        ViewContext.Writer.WriteLine(" $('." + i.Id + "-star-rating-product').starRating({starSize: 20,initialRating: " + i.Reviews?.Average(x=>x.Rating) + ",readOnly: true});");
+                                    }
+                                })
+
+                            </script>
+                        }
+                        <div class="price mt-1">
+                            <div class="price">₱ @{ ViewContext.Writer.Write(i.Price?.ToString("n2"));}</div>
+
+                          
+                        </div> <!-- price-wrap.// -->
+                    </figcaption>
+                </div>
+            </div> <!-- col.// -->
+        }
+
+
+    </div> <!-- row.// -->
+</section>
+
+@Html.PagedListPager(Model, page =>
+    Url.Action("productpartials", new { search = ViewBag.search, page = page }), paginationOption
+    )
